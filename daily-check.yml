@@ -1,0 +1,29 @@
+name: Daily studio check
+on:
+  schedule:
+    # 02:30 UTC = 08:00 India Standard Time
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+jobs:
+  daily-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check required secrets
+        env:
+          STUDIO_URL: ${{ secrets.STUDIO_URL }}
+          STUDIO_RUN_SECRET: ${{ secrets.STUDIO_RUN_SECRET }}
+        run: |
+          if [ -z "$STUDIO_URL" ] || [ -z "$STUDIO_RUN_SECRET" ]; then
+            echo "::error::Add STUDIO_URL and STUDIO_RUN_SECRET in GitHub repository Actions secrets."
+            exit 1
+          fi
+      - name: Request studio production check
+        env:
+          STUDIO_URL: ${{ secrets.STUDIO_URL }}
+          STUDIO_RUN_SECRET: ${{ secrets.STUDIO_RUN_SECRET }}
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST "${STUDIO_URL%/}/api/run" \
+            -H "Content-Type: application/json" \
+            -H "x-studio-secret: ${STUDIO_RUN_SECRET}" \
+            -d '{"source":"github-actions-scheduled-check"}'
