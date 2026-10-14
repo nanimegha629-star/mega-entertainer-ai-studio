@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101018">
+  <title>MEGA ENTERTAINER AI STUDIO</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brandmark">MEGA <span>ENTERTAINER</span></div>
+    <div class="sub">AI FAN CONTENT STUDIO · CONTROL CENTRE</div>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">AUTOMATION CONTROL CENTRE</p>
+        <h1>Two stars.<br><span>One studio.</span></h1>
+        <p class="intro">Track daily concepts, generation jobs and delivery status from your phone.</p>
+      </div>
+      <div class="badge"><span class="dot"></span> HONEST STATUS MODE</div>
+    </section>
+    <section class="stats">
+      <article><small>DAILY TARGET</small><strong>2 videos</strong><span>4 posters</span></article>
+      <article><small>DELIVERY TARGET</small><strong>08:00 AM</strong><span>India Standard Time</span></article>
+      <article><small>LIVE JOB STATUS</small><strong id="status">Not checked</strong><span id="statusNote">Connect the backend to check.</span></article>
+    </section>
+    <section class="cards">
+      <article class="star-card sudheer">
+        <div class="card-top"><span class="tag">STAR 01</span><span class="status-pill">2 posters + 1 video target</span></div>
+        <h2>Sudigali Sudheer</h2><p>Concepts, poster jobs, cinematic video jobs and delivery links.</p>
+        <div class="outputs"><div><b id="sudheerVideos">0</b><small>Verified videos</small></div><div><b id="sudheerPosters">0</b><small>Verified posters</small></div></div>
+        <button onclick="showStar('Sudigali Sudheer')">View production details</button>
+      </article>
+      <article class="star-card ntr">
+        <div class="card-top"><span class="tag">STAR 02</span><span class="status-pill">2 posters + 1 video target</span></div>
+        <h2>NTR</h2><p>Concepts, poster jobs, cinematic video jobs and delivery links.</p>
+        <div class="outputs"><div><b id="ntrVideos">0</b><small>Verified videos</small></div><div><b id="ntrPosters">0</b><small>Verified posters</small></div></div>
+        <button onclick="showStar('NTR')">View production details</button>
+      </article>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><div><p class="eyebrow">PIPELINE</p><h2>Today's production</h2></div><button class="secondary" id="refreshBtn">Refresh status</button></div>
+      <div id="pipeline" class="pipeline"><div class="pipeline-row"><span class="step">01</span><div><b>Research & concepts</b><small>Waiting for backend configuration</small></div><span class="state">NOT CONFIGURED</span></div>
+      <div class="pipeline-row"><span class="step">02</span><div><b>Generate artwork and video</b><small>No provider is connected yet</small></div><span class="state">NOT CONFIGURED</span></div>
+      <div class="pipeline-row"><span class="step">03</span><div><b>Validate real output files</b><small>Incomplete jobs will never be counted as finished</small></div><span class="state">READY FOR SETUP</span></div>
+      <div class="pipeline-row"><span class="step">04</span><div><b>Deliver to Drive and Telegram</b><small>Connect credentials through environment variables</small></div><span class="state">NOT CONFIGURED</span></div></div>
+      <p class="notice">Important: this dashboard does not claim that content exists unless the backend verifies actual output files. The starter package does not generate fake sample posters or videos.</p>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><div><p class="eyebrow">QUICK ACTIONS</p><h2>Manage the studio</h2></div></div>
+      <div class="actions"><button id="runBtn">Run production check</button><button class="secondary" id="telegramBtn">Check Telegram setup</button><button class="secondary" id="driveBtn">Check Drive setup</button></div>
+      <p id="actionMessage" class="action-message" role="status">Backend actions become available after deployment and environment setup.</p>
+    </section>
+    <footer>MEGA ENTERTAINER AI STUDIO · Mobile-first starter · ₹0 target, subject to free-tier limits</footer>
+  </main>
+  <dialog id="details"><div class="dialog-head"><h2 id="dialogTitle">Production details</h2><button id="closeDialog" class="close">✕</button></div><p>Nothing is marked complete until a real output file passes validation.</p><pre id="detailText">No production report loaded.</pre></dialog>
+  <script src="/app.js"></script>
+</body>
+</html>
